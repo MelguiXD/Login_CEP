@@ -1,0 +1,23 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: guiga
+  password: gui12345
+
+development:
+  <<: *default
+  database: Login_CEP_development
+
+  
+test:
+  <<: *default
+  database: Login_CEP_test
+
+
+production:
+  <<: *default
+  database: Login_CEP_production
+  username: Login_CEP
+  password: <%= ENV["LOGIN_CEP_DATABASE_PASSWORD"] %>
