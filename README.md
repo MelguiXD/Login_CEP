@@ -1,24 +1,99 @@
-# README
+# Login-CEP
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Projeto feito em Ruby on Rails com banco em PostgreSQL como API fazendo autenticação utilizando devise_token_auth.
+Busca de CEP salvando em uma base, vinculando o endereço com o usuário logado.
 
-Things you may want to cover:
+<table>
+ <tr>
+    <td>Versão Ruby:</td>
+    <td>3.1.3</td>
+ </tr>
+ <tr>
+    <td>Versão Rails:</td>
+    <td>7.0.4.2</td>
+ </tr>
+ <tr>
+    <td>Database:</td>
+    <td>PostgreSQL</td>
+ </tr>
+</table>
 
-* Ruby version
+## 1- Configuração
+```bash
+# instalação das gems
+bundle install
 
-* System dependencies
+# criação do banco
+rails db:create
+rails db:migrate
+rails db:migrate RAILS_ENV=test
 
-* Configuration
+# iniciar o servidor
+rails s
+```
+BackEnd disponível no `http://localhost:3000`.
 
-* Database creation
+Como o sistema utiliza o PostgreSQL, é necessário que se coloque o usuário e senha para acesso ao banco no arquivo: `database.yml`.
 
-* Database initialization
+## 2- Feito/Pendência
 
-* How to run the test suite
+- [x] Criação de um Login que salva em uma base
+- [x] Update/Delete do Login
+- [x] Autenticação via Token
+- [x] Validação do Token
+- [ ] Busca por CEP
+- [ ] Salvar o endereço consultado em uma base
+- [ ] Tratamento do CEP
 
-* Services (job queues, cache servers, search engines, etc.)
+## 3- Testes
 
-* Deployment instructions
+### Testes foram realizados utilizando o Insomnia
 
-* ...
+Para Login e Logout foram utilizados:
+<table>
+ <tr>
+    <td>Login:</td>
+    <td>POST</td>
+    <td>http://localhost:3000/api/auth/sign_in</td>
+    <td>JSON: {"email": "{{ _.email }}","password": "{{ _.password }}"}</td>
+ </tr>
+ <tr>
+    <td>Logout:</td>
+    <td>DELETE</td>
+    <td>http://localhost:3000/api/auth/sign_out</td>
+    <td>Header: access-token{token} , uid{email} , client</td>
+ </tr>
+</table>
+
+Para validação do Token foi utilizado:
+<table>
+ <tr>
+    <td>Valida Token:</td>
+    <td>GET</td>
+    <td>http://localhost:3000/api/auth/validate_token</td>
+    <td>Header: access-token{token} , uid{email} , client</td>
+ </tr>
+</table>
+
+Para criação do usuário/atualização/exclusão foram utilizados:
+<table>
+ <tr>
+    <td>Criação:</td>
+    <td>POST</td>
+    <td>http://localhost:3000/api/auth</td>
+    <td>JSON: {"email": "{{ _.email }}","password": "{{ _.password }}","password_confirmation": "{{ _.password }}"}</td>
+ </tr>
+ <tr>
+    <td>Alteração:</td>
+    <td>PUT</td>
+    <td>http://localhost:3000/api/auth</td>
+    <td>JSON: Qualquer opção que queira alterar</td>
+ </tr>
+ <tr>
+    <td>Exclusão:</td>
+    <td>DELETE</td>
+    <td>http://localhost:3000/api/auth</td>
+    <td>Header: access-token{token} , uid{email} , client</td>
+ </tr>
+</table>
+
