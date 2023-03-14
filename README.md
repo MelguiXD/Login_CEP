@@ -97,3 +97,25 @@ Para criação do usuário/atualização/exclusão foram utilizados:
  </tr>
 </table>
 
+Para esqueci minha senha/atualização/reset foram utilizados:
+<table>
+ <tr>
+    <td>Esqueci:</td>
+    <td>POST</td>
+    <td>http://localhost:3000/api/auth/password</td>
+    <td>JSON: {"email": "{{ _.email }}"}</td>
+ </tr>
+ <tr>
+    <td>Atualização:</td>
+    <td>PUT</td>
+    <td>http://localhost:3000/api/auth</td>
+    <td>JSON: {"current_password": "{{ _.password }}","password": "{{ _.password }}","password_confirmation": "{{ _.password }}"}</td>
+ </tr>
+ <tr>
+    <td>Reset:</td>
+    <td>PUT</td>
+    <td>http://localhost:3000/api/auth/password</td>
+    <td>JSON: {"password": "{{ _.password }}","password_confirmation": "{{ _.password }}"}</td>
+ </tr>
+</table>
+
