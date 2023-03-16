@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_04_182859) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_15_224201) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "cep"
+    t.string "logradouro"
+    t.string "complemento"
+    t.string "bairro"
+    t.string "cidade"
+    t.string "uf"
+    t.integer "ibge"
+    t.integer "gia"
+    t.integer "ddd"
+    t.integer "siafi"
+    t.boolean "erro"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
