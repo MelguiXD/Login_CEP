@@ -38,12 +38,13 @@ Como o sistema utiliza o PostgreSQL, é necessário que se coloque o usuário e 
 ## 2- Feito/Pendência
 
 - [x] Criação de um Login que salva em uma base
-- [x] Update/Delete do Login
-- [x] Autenticação via Token
-- [x] Validação do Token
-- [ ] Busca por CEP
-- [ ] Salvar o endereço consultado em uma base
-- [ ] Tratamento do CEP
+- - [x] Update/Delete do Login
+- - [x] Autenticação via Token
+- - [x] Validação do Token
+- [x] Busca por CEP
+- - [x] Salvar o endereço consultado em uma base
+- - [x] Tratamento do CEP
+- - [ ] Vinculo do CEP para o usuário logado em uma base
 
 ## 3- Testes
 
@@ -119,3 +120,12 @@ Para esqueci minha senha/atualização/reset foram utilizados:
  </tr>
 </table>
 
+Para consulta do CEP foi utilizado:
+<table>
+ <tr>
+    <td>ConsultaCEP:</td>
+    <td>GET</td>
+    <td>http://localhost:3000/api/v1/addresses/{{ _.cep }}</td>
+    <td>Retorna um arquivo JSON que é tratado e salvo na base</td>
+ </tr>
+</table>
