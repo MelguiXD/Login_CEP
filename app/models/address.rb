@@ -1,4 +1,5 @@
 class Address < ApplicationRecord
+    has_many :vinculos
     validates :cep, uniqueness: true, presence: true
     validates :logradouro, presence: true, unless: -> { bairro.blank? }
 

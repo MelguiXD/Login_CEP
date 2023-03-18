@@ -44,7 +44,8 @@ Como o sistema utiliza o PostgreSQL, é necessário que se coloque o usuário e 
 - [x] Busca por CEP
 - - [x] Salvar o endereço consultado em uma base
 - - [x] Tratamento do CEP
-- - [ ] Vinculo do CEP para o usuário logado em uma base
+- - [x] Vinculo do CEP para o usuário logado em uma base
+- - - [ ] AJUSTAR: CEPs já cadastrados e consultados por novos usuários não estão vinculando
 
 ## 3- Testes
 
@@ -127,5 +128,15 @@ Para consulta do CEP foi utilizado:
     <td>GET</td>
     <td>http://localhost:3000/api/v1/addresses/{{ _.cep }}</td>
     <td>Retorna um arquivo JSON que é tratado e salvo na base</td>
+ </tr>
+</table>
+
+Para vinculo do CEP foi utilizado:
+<table>
+ <tr>
+    <td>VinculaCEP:</td>
+    <td>GET</td>
+    <td>http://localhost:3000/api/v1/vinculos</td>
+    <td>AJUSTAR: vincula somente CEPs novos</td>
  </tr>
 </table>

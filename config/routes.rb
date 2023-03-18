@@ -1,6 +1,8 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do  
+  resources :vinculos
+  
   namespace :api, defaults: { format: :json } do
     mount_devise_token_auth_for 'User', at: 'auth'
     scope module: :v1, 
@@ -14,5 +16,11 @@ Rails.application.routes.draw do
       get '/addresses/:cep', to: 'addresses#show'
     resources :addresses
     end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      get '/vinculos', to: 'vinculos#show'
+        end
   end
 end
