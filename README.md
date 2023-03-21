@@ -1,7 +1,7 @@
 # Login-CEP
 
 Projeto feito em Ruby on Rails com banco em PostgreSQL como API fazendo autenticação utilizando devise_token_auth.
-Busca de CEP salvando em uma base, vinculando o endereço com o usuário logado.
+Busca de CEP salvando em uma base, vinculando o endereço com o usuário logado. Como sou novato com Ruby decidi fazer o vinculo separadamente.
 
 <table>
  <tr>
