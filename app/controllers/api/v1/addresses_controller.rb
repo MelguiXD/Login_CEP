@@ -42,7 +42,7 @@ class Api::V1::AddressesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_address
       zip_code = Address.format_cep(params[:cep])
-      @address = Address.find_by_cep(zip_code).touch
+      @address = Address.find_by_cep(zip_code)
 
       @address ||= Address.get_from_remote(zip_code, "https://ws.apicep.com/cep/#{zip_code}.json", 'apicep')
       @address ||= Address.get_from_remote(zip_code, "https://viacep.com.br/ws/#{zip_code}/json/unicode", 'viacep')
@@ -50,6 +50,7 @@ class Api::V1::AddressesController < ApplicationController
       @address ||= Address.get_from_remote(zip_code, "http://cep.la/#{zip_code}/", 'cepla')
       @address ||= Address.new(erro: true)      
 
+      @address = Address.find_by_cep(zip_code).touch
     end
 
     # Only allow a list of trusted parameters through.
