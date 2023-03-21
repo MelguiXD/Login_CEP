@@ -46,7 +46,7 @@ class Api::V1::VinculosController < ApplicationController
       #(user: User.maximum(:updated_at), address: Address.maximum(:updated_at))
       #(user: User.order("updated_at").last, address: Address.order("data").last)
       
-      Vinculo.create(user: User.order("updated_at").last, address: Address.last) 
+      Vinculo.create(user: User.order("updated_at").last, address: Address.order("updated_at").last) 
       @vinculo = Vinculo.all.select(:user_id, :address_id).distinct#(params[:id])
 
     end
